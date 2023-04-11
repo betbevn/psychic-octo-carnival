@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Authmiddleware from "./routes/middleware/Authmiddleware";
 import { authRoutes, userRoutes } from "./routes/allRoutes";
 import NonAuthLayout from "./components/NonAuthLayout";
@@ -14,7 +10,7 @@ function App() {
     <React.Fragment>
       <Router>
         <Switch>
-          {/* {authRoutes.map((route, idx) => (
+          {authRoutes.map((route, idx) => (
             <Authmiddleware
               path={route.path}
               layout={NonAuthLayout}
@@ -23,7 +19,7 @@ function App() {
               isAuthProtected={false}
               exact
             />
-          ))} */}
+          ))}
 
           {userRoutes.map((route: any, idx: number) => (
             <Authmiddleware
@@ -31,8 +27,7 @@ function App() {
               layout={Layout}
               component={route.component}
               key={idx}
-              // isAuthProtected={true}
-              isAuthProtected={false}
+              isAuthProtected={true}
               exact
             />
           ))}
