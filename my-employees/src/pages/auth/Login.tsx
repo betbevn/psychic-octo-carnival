@@ -1,4 +1,49 @@
-const Login = () => {
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { withRouter } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+// actions
+import { loginUser } from "../../store/actions";
+
+const validationSchema = yup
+  .object()
+  .shape({
+    email: yup.string().required("Email is required").email("Email invalid"),
+    password: yup.string().required("Password is required"),
+  })
+  .required();
+
+interface Form {
+  email: string;
+  password: string;
+}
+
+interface LoginProps {
+  history: object;
+}
+
+const Login = ({ history }: LoginProps) => {
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<Form>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+    resolver: yupResolver(validationSchema),
+  });
+
+  const handleLogin = useCallback(
+    async (form: Form) => {
+      dispatch(loginUser(form, history));
+    },
+    [dispatch, history]
+  );
+
   return (
     <>
       <div className="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
@@ -13,26 +58,19 @@ const Login = () => {
               Go to the moon
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
+          <form onSubmit={handleSubmit(handleLogin)}>
             <div className="-space-y-px rounded-md shadow-sm">
               <input
-                id="email-address"
-                name="email"
                 type="email"
-                autoComplete="email"
-                required
                 className="relative block w-full rounded-t-md border-0 px-3 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="Email address"
+                {...register("email")}
               />
               <input
-                id="password"
-                name="password"
                 type="password"
-                autoComplete="current-password"
-                required
                 className="relative block w-full rounded-b-md border-0 px-3 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="Password"
+                {...register("password")}
               />
             </div>
             <div>
@@ -50,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);
