@@ -34,8 +34,8 @@ const Profile = () => {
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
     values: {
-      firstName: success.firstName,
-      lastName: success.lastName,
+      firstName: success?.firstName ?? "",
+      lastName: success?.lastName ?? "",
     },
   });
 

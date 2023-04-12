@@ -4,7 +4,7 @@ import { ProfileTypes } from "./actionTypes";
 const initialState: UsersStore = {
   error: "",
   users: [],
-  userInfo: null,
+  userInfo: undefined,
 };
 
 const profile = (state = initialState, action: any) => {

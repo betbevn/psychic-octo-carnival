@@ -1,7 +1,10 @@
+import { UserEntity } from "@/types/common";
 import { ProfileTypes } from "./actionTypes";
 
 // Update Profile
-export const editProfile = (user: any) => {
+export const editProfile = (
+  user: Pick<UserEntity, "firstName" | "lastName">
+) => {
   return {
     type: ProfileTypes.EDIT_PROFILE,
     payload: { user },

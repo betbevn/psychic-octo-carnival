@@ -6,13 +6,18 @@ import { LoginTypes } from "./actionTypes";
 import { apiError, loginSuccess } from "./actions";
 
 import * as url from "../../../helper/url_helper";
+import { UserEntity } from "@/types/common";
 
 function* loginUser({ payload: { user, history } }: any) {
   try {
-    const response: Promise<any> = yield call(postLogin, url.AMBASSADOR_LOGIN, {
-      email: user.email,
-      password: user.password,
-    });
+    const response: Promise<UserEntity> = yield call(
+      postLogin,
+      url.AMBASSADOR_LOGIN,
+      {
+        email: user.email,
+        password: user.password,
+      }
+    );
     localStorage.setItem("authUser", JSON.stringify(response));
     yield put(loginSuccess(response));
     history.push("/dashboard");

@@ -5,7 +5,7 @@ const initialState: RegisterStore = {
   registrationError: null,
   message: null,
   loading: false,
-  user: null,
+  user: undefined,
 };
 
 const register = (state = initialState, action: any) => {
@@ -28,7 +28,7 @@ const register = (state = initialState, action: any) => {
     case RegisterTypes.REGISTER_USER_FAILED:
       state = {
         ...state,
-        user: null,
+        user: undefined,
         loading: false,
         registrationError: action.payload,
       };

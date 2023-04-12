@@ -3,10 +3,13 @@ import { ProfileTypes } from "./actionTypes";
 
 const initialState: ProfileStore = {
   error: "",
-  success: "",
+  success: undefined,
 };
 
-const profile = (state = initialState, action: any) => {
+const profile = (
+  state = initialState,
+  action: { type: string; payload: any }
+) => {
   switch (action.type) {
     case ProfileTypes.EDIT_PROFILE:
       state = { ...state };

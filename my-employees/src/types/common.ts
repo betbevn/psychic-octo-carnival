@@ -13,3 +13,12 @@ export interface UserEntity {
   isAmbassador: boolean;
   email: string;
 }
+
+export interface LoginPayload {
+  password: string;
+  email: string;
+}
+export interface UpdateProfilePayload {
+  firstName: string;
+  lastName: string;
+}

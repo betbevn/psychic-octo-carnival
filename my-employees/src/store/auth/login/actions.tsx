@@ -1,20 +1,22 @@
+import { LoginPayload, UserEntity } from "@/types/common";
 import { LoginTypes } from "./actionTypes";
+import { History } from "history";
 
-export const loginUser = (user: any, history: any) => {
+export const loginUser = (user: LoginPayload, history: History) => {
   return {
     type: LoginTypes.LOGIN_USER,
     payload: { user, history },
   };
 };
 
-export const loginSuccess = (user: any) => {
+export const loginSuccess = (user: Promise<UserEntity>) => {
   return {
     type: LoginTypes.LOGIN_SUCCESS,
     payload: user,
   };
 };
 
-export const logoutUser = (history: any) => {
+export const logoutUser = (history: History) => {
   return {
     type: LoginTypes.LOGOUT_USER,
     payload: { history },
@@ -32,12 +34,5 @@ export const apiError = (error: any) => {
   return {
     type: LoginTypes.API_ERROR,
     payload: error,
-  };
-};
-
-export const socialLogin = (data: any, history: any, type: any) => {
-  return {
-    type: LoginTypes.SOCIAL_LOGIN,
-    payload: { data, history, type },
   };
 };

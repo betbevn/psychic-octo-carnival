@@ -10,12 +10,13 @@ import {
   getProfileError,
   getProfileSuccess,
 } from "./actions";
+import { UserEntity } from "@/types/common";
 
 //Include Both Helper File with needed methods
 
 function* editProfile({ payload: { user } }: any) {
   try {
-    const response: Promise<any> = yield call(
+    const response: Promise<UserEntity> = yield call(
       putProfileAuth,
       url.UPDATE_AMBASSADOR,
       {
