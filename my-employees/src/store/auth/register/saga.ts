@@ -7,7 +7,7 @@ import { registerUserSuccessful, registerUserFailed } from "./actions";
 import * as url from "../../../helper/url_helper";
 import { postRegister } from "api/api";
 
-function* registerUser({ payload: { user } }: any) {
+function* registerUser({ payload: { user, history } }: any) {
   try {
     const data = {
       first_name: user.firstName,
@@ -16,13 +16,12 @@ function* registerUser({ payload: { user } }: any) {
       password: user.password,
       password_confirm: user.passwordConfirm,
     };
-
     const response: Promise<any> = yield call(
       postRegister,
       url.AMBASSADOR_REGISTER,
       data
     );
-    localStorage.setItem("authUser", JSON.stringify(response));
+    history.push("/login");
     yield put(registerUserSuccessful(response));
   } catch (error) {
     yield put(registerUserFailed(error));

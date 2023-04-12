@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import * as yup from "yup";
 // actions
 import { registerUser } from "../../store/actions";
+import { withRouter } from "react-router-dom";
 
 const validationSchema = yup
   .object()
@@ -28,7 +29,11 @@ interface Form {
   passwordConfirm: string;
 }
 
-const Signup = () => {
+interface LoginProps {
+  history: object;
+}
+
+const Signup = ({ history }: LoginProps) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -40,12 +45,9 @@ const Signup = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const handleRegister = useCallback(
-    async (form: Form) => {
-      dispatch(registerUser(form));
-    },
-    [dispatch]
-  );
+  const handleRegister = (form: Form) => {
+    dispatch(registerUser(form, history));
+  };
 
   return (
     <>
@@ -115,7 +117,7 @@ const Signup = () => {
 
             <div className="mt-5">
               <button
-                disabled={!isSubmitting}
+                disabled={isSubmitting}
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
@@ -129,4 +131,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default withRouter(Signup);

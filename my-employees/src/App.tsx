@@ -8,7 +8,7 @@ import Layout from "./components/Layout";
 function App() {
   return (
     <React.Fragment>
-      <Router>
+      <Router forceRefresh>
         <Switch>
           {authRoutes.map((route, idx) => (
             <Authmiddleware

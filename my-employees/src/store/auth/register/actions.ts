@@ -1,22 +1,22 @@
-import {RegisterTypes} from "./actionTypes"
+import { RegisterTypes } from "./actionTypes";
 
-export const registerUser = (user : any) => {
+export const registerUser = (user: any, history: any) => {
   return {
     type: RegisterTypes.REGISTER_USER,
-    payload: { user },
-  }
-}
+    payload: { user, history },
+  };
+};
 
-export const registerUserSuccessful = (user : any) => {
+export const registerUserSuccessful = (user: any) => {
   return {
     type: RegisterTypes.REGISTER_USER_SUCCESSFUL,
     payload: user,
-  }
-}
+  };
+};
 
-export const registerUserFailed = (user : any) => {
+export const registerUserFailed = (user: any) => {
   return {
     type: RegisterTypes.REGISTER_USER_FAILED,
     payload: user,
-  }
-}
+  };
+};

@@ -37,12 +37,9 @@ const Login = ({ history }: LoginProps) => {
     resolver: yupResolver(validationSchema),
   });
 
-  const handleLogin = useCallback(
-    async (form: Form) => {
-      dispatch(loginUser(form, history));
-    },
-    [dispatch, history]
-  );
+  const handleLogin = (form: Form) => {
+    dispatch(loginUser(form, history));
+  };
 
   return (
     <>
