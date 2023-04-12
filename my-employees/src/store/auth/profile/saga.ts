@@ -1,32 +1,31 @@
-import { takeEvery, fork, put, all, call } from "redux-saga/effects";
+import { all, call, fork, put, takeEvery } from "redux-saga/effects";
 
 // Login Redux States
-import { ProfileTypes } from "./actionTypes";
-import { profileSuccess, profileError, getProfileSuccess } from "./actions";
-import { getProfileAuth } from "api/api";
+import { getProfileAuth, putProfileAuth } from "api/api";
 import * as url from "../../../helper/url_helper";
+import { ProfileTypes } from "./actionTypes";
+import {
+  editProfileFailed,
+  editProfileSuccess,
+  getProfileError,
+  getProfileSuccess,
+} from "./actions";
 
 //Include Both Helper File with needed methods
 
 function* editProfile({ payload: { user } }: any) {
   try {
-    if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      // yield put(profileSuccess(response));
-    } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
-      // const response: Promise<any> = yield call(postJwtProfile, "/post-jwt-profile",  {
-      //   username: user.username,
-      //   idx: user.idx,
-      // })
-      // yield put(profileSuccess(response))
-    } else if (process.env.REACT_APP_DEFAULTAUTH === "fake") {
-      // const response: Promise<any> = yield call(postFakeProfile, {
-      //   username: user.username,
-      //   idx: user.idx,
-      // });
-      // yield put(profileSuccess(response));
-    }
+    const response: Promise<any> = yield call(
+      putProfileAuth,
+      url.UPDATE_AMBASSADOR,
+      {
+        first_name: user.firstName,
+        last_name: user.lastName,
+      }
+    );
+    yield put(editProfileSuccess(response));
   } catch (error) {
-    yield put(profileError(error));
+    yield put(editProfileFailed(error));
   }
 }
 
@@ -38,7 +37,7 @@ function* getProfile() {
     );
     yield put(getProfileSuccess(response));
   } catch (error) {
-    yield put(profileError(error));
+    yield put(getProfileError(error));
   }
 }
 export function* watchProfile() {

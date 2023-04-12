@@ -1,5 +1,6 @@
 import { ProfileTypes } from "./actionTypes";
 
+// Update Profile
 export const editProfile = (user: any) => {
   return {
     type: ProfileTypes.EDIT_PROFILE,
@@ -7,26 +8,21 @@ export const editProfile = (user: any) => {
   };
 };
 
-export const profileSuccess = (msg: any) => {
+export const editProfileSuccess = (msg: any) => {
   return {
-    type: ProfileTypes.PROFILE_SUCCESS,
+    type: ProfileTypes.EDIT_PROFILE_SUCCESS,
     payload: msg,
   };
 };
 
-export const profileError = (error: any) => {
+export const editProfileFailed = (error: any) => {
   return {
-    type: ProfileTypes.PROFILE_ERROR,
+    type: ProfileTypes.EDIT_PROFILE_FAILED,
     payload: error,
   };
 };
 
-export const resetProfileFlag = () => {
-  return {
-    type: ProfileTypes.RESET_PROFILE_FLAG,
-  };
-};
-
+// Get Profile
 export const getProfile = () => {
   return {
     type: ProfileTypes.GET_PROFILE,
@@ -40,8 +36,9 @@ export const getProfileSuccess = (reponse: any) => {
   };
 };
 
-export const getProfileError = () => {
+export const getProfileError = (error: any) => {
   return {
     type: ProfileTypes.GET_PROFILE_FAILED,
+    payload: error,
   };
 };

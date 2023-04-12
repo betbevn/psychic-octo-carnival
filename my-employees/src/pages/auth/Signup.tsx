@@ -1,12 +1,11 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
 // actions
-import { registerUser } from "../../store/actions";
 import { withRouter } from "react-router-dom";
+import { registerUser } from "../../store/actions";
 
 const validationSchema = yup
   .object()

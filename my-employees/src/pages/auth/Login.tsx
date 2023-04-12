@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import * as yup from "yup";
 
 // actions
