@@ -1,3 +1,4 @@
+import { UserEntity } from "@/types/common";
 import { StoreState } from "@/types/index";
 import { History } from "history";
 import { useEffect } from "react";
@@ -34,7 +35,7 @@ const Team = ({ history }: TeamProps) => {
         </thead>
         <tbody>
           {users.length
-            ? users.map((item: any) => {
+            ? users.map((item: UserEntity) => {
                 return (
                   <tr key={item.id}>
                     <th>{item.id}</th>
