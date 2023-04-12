@@ -1,8 +1,8 @@
-import { Fragment, useMemo } from "react";
+import React, { Fragment, useMemo } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 
 interface LayoutProps {
-  children: any;
+  children: React.ReactNode;
 }
 
 const navigation = [

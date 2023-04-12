@@ -1,10 +1,14 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UserForm } from "helper/interface_helper";
+import { History } from "history";
+import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import * as yup from "yup";
-// actions
 import { withRouter } from "react-router-dom";
+import * as yup from "yup";
+
+// actions
 import { registerUser } from "../../store/actions";
 
 const validationSchema = yup
@@ -20,33 +24,28 @@ const validationSchema = yup
   })
   .required();
 
-interface Form {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
+interface SignupProps {
+  history: History;
 }
 
-interface LoginProps {
-  history: object;
-}
-
-const Signup = ({ history }: LoginProps) => {
+const Signup = ({ history }: SignupProps) => {
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<Form>({
+  } = useForm<UserForm>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
-  const handleRegister = (form: Form) => {
-    dispatch(registerUser(form, history));
-  };
+  const handleRegister = useCallback(
+    (form: UserForm) => {
+      dispatch(registerUser(form, history));
+    },
+    [dispatch, history]
+  );
 
   return (
     <>

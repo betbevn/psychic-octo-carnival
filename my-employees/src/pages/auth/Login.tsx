@@ -1,4 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UserForm } from "helper/interface_helper";
+import { History } from "history";
 import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -16,13 +18,8 @@ const validationSchema = yup
   })
   .required();
 
-interface Form {
-  email: string;
-  password: string;
-}
-
 interface LoginProps {
-  history: object;
+  history: History;
 }
 
 const Login = ({ history }: LoginProps) => {
@@ -31,14 +28,14 @@ const Login = ({ history }: LoginProps) => {
     register,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<Form>({
+  } = useForm<Pick<UserForm, "email" | "password">>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
   const handleLogin = useCallback(
-    (form: Form) => {
+    (form: Pick<UserForm, "email" | "password">) => {
       dispatch(loginUser(form, history));
     },
     [dispatch, history]

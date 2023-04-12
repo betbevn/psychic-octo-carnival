@@ -13,13 +13,13 @@ interface RouteProps {
 }
 
 const userRoutes: Array<RouteProps> = [
-  { path: "/projects", component: Profile },
-  { path: "/profiles", component: Profile },
-  { path: "/profile/add", component: Profile },
-  { path: "/profile", component: Profile },
-  { path: "/profile/edit", component: Profile },
+  // { path: "/projects", component: Profile },
+  // { path: "/profiles", component: Profile },
+  // { path: "/profile/add", component: Profile },
+  // { path: "/profile/edit", component: Profile },
   { path: "/dashboard", component: Dashboard },
   { path: "/team", component: Team },
+  { path: "/profile", component: Profile },
   { path: "/user/:id", component: UserInfo },
   { path: "/", exact: true, component: () => <Redirect to="/dashboard" /> },
 ];

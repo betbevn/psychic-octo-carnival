@@ -1,17 +1,13 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "@hookform/error-message";
+import { yupResolver } from "@hookform/resolvers/yup";
 import clx from "classnames";
+import { UserForm } from "helper/interface_helper";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { editProfile, getProfile } from "store/actions";
 import * as yup from "yup";
-
-interface Form {
-  firstName: string;
-  lastName: string;
-}
 
 const validationSchema = yup
   .object()
@@ -32,7 +28,7 @@ const Profile = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<Form>({
+  } = useForm<Pick<UserForm, "firstName" | "lastName">>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
@@ -43,7 +39,7 @@ const Profile = () => {
   });
 
   const handleUpdate = useCallback(
-    (form: Form) => {
+    (form: Pick<UserForm, "firstName" | "lastName">) => {
       setIsModalOpen(false);
       dispatch(editProfile(form));
     },
