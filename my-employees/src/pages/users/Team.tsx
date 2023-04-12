@@ -32,25 +32,26 @@ const Team = ({ history }: TeamProps) => {
           </tr>
         </thead>
         <tbody>
-          {users.length &&
-            users.map((item: any) => {
-              return (
-                <tr key={item.id}>
-                  <th>{item.id}</th>
-                  <td>{item.firstName + " " + item.lastName}</td>
-                  <td>{item.email}</td>
-                  <td>{item.isAmbassador ? "true" : "false"}</td>
-                  <td>
-                    <button
-                      onClick={() => history.push(`/user/${item.id}`)}
-                      className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      View
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+          {users.length
+            ? users.map((item: any) => {
+                return (
+                  <tr key={item.id}>
+                    <th>{item.id}</th>
+                    <td>{item.firstName + " " + item.lastName}</td>
+                    <td>{item.email}</td>
+                    <td>{item.isAmbassador ? "true" : "false"}</td>
+                    <td>
+                      <button
+                        onClick={() => history.push(`/user/${item.id}`)}
+                        className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })
+            : null}
         </tbody>
       </table>
     </div>
