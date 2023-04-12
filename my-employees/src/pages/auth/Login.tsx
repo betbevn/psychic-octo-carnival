@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 // actions
-import { loginUser } from "../../store/actions";
+import { loginUser, logoutUser } from "../../store/actions";
 
 const validationSchema = yup
   .object()
@@ -37,9 +37,18 @@ const Login = ({ history }: LoginProps) => {
     resolver: yupResolver(validationSchema),
   });
 
-  const handleLogin = (form: Form) => {
-    dispatch(loginUser(form, history));
-  };
+  const handleLogin = useCallback(
+    (form: Form) => {
+      dispatch(loginUser(form, history));
+    },
+    [dispatch, history]
+  );
+
+  useEffect(() => {
+    if (localStorage.getItem("authUser")) {
+      dispatch(logoutUser(history));
+    }
+  }, [dispatch, history]);
 
   return (
     <>
@@ -72,6 +81,7 @@ const Login = ({ history }: LoginProps) => {
             </div>
             <div>
               <button
+                disabled={isSubmitting}
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
