@@ -1,9 +1,9 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 
 // Login Redux States
-import { LoginTypes } from "./actionTypes";
-import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
 import { postLogin } from "api/api";
+import { LoginTypes } from "./actionTypes";
+import { apiError, loginSuccess } from "./actions";
 
 import * as url from "../../../helper/url_helper";
 

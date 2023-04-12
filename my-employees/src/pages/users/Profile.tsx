@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getProfile } from "store/actions";
+import { editProfile, getProfile } from "store/actions";
 import * as yup from "yup";
 
 interface Form {
@@ -42,16 +42,17 @@ const Profile = () => {
     },
   });
 
-  const handleUpdate = useCallback((form: Form) => {
-    setIsModalOpen(false);
-    // dispatch(registerUser(form));
-  }, []);
+  const handleUpdate = useCallback(
+    (form: Form) => {
+      setIsModalOpen(false);
+      dispatch(editProfile(form));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
-    if (!isModalOpen) {
-      dispatch(getProfile());
-    }
-  }, [dispatch, isModalOpen]);
+    dispatch(getProfile());
+  }, [dispatch]);
 
   return (
     <div className="overflow-hidden bg-white shadow sm:rounded-lg">
