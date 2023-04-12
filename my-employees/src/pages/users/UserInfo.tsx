@@ -1,3 +1,4 @@
+import { StoreState } from "@/types/index";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -6,7 +7,7 @@ import { getUserInfo } from "store/actions";
 const UserInfo = () => {
   const params: { id: string } = useParams();
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state: any) => ({
+  const { userInfo } = useSelector((state: StoreState) => ({
     userInfo: state.users.userInfo,
   }));
 

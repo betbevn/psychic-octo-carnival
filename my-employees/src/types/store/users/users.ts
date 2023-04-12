@@ -1,5 +1,7 @@
+import { UserEntity } from "@/types/common";
+
 export interface UsersStore {
   error: string;
-  users: any[];
-  userInfo: null;
+  users: UserEntity[];
+  userInfo: UserEntity;
 }

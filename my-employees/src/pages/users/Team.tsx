@@ -1,8 +1,9 @@
+import { StoreState } from "@/types/index";
+import { History } from "history";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getAllUsers } from "store/user/users/actions";
-import { History } from "history";
 
 interface TeamProps {
   history: History;
@@ -11,7 +12,7 @@ interface TeamProps {
 const Team = ({ history }: TeamProps) => {
   const dispatch = useDispatch();
 
-  const { users } = useSelector((state: any) => ({
+  const { users } = useSelector((state: StoreState) => ({
     users: state.users.users,
   }));
 

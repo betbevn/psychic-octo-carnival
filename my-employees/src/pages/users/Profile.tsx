@@ -1,7 +1,8 @@
+import { UserForm } from "@/types/common";
+import { StoreState } from "@/types/index";
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import clx from "classnames";
-import { UserForm } from "@/types/common";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +21,7 @@ const validationSchema = yup
 const Profile = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { success } = useSelector((state: any) => ({
+  const { success } = useSelector((state: StoreState) => ({
     success: state.profile.success,
   }));
 

@@ -5,3 +5,11 @@ export interface UserForm {
   password: string;
   passwordConfirm: string;
 }
+
+export interface UserEntity {
+  firstName: string;
+  lastName: string;
+  id: string;
+  isAmbassador: boolean;
+  email: string;
+}
