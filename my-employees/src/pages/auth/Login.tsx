@@ -1,9 +1,9 @@
-import { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { withRouter } from "react-router-dom";
+import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
+import * as yup from "yup";
 
 // actions
 import { loginUser, logoutUser } from "../../store/actions";
@@ -30,7 +30,7 @@ const Login = ({ history }: LoginProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<Form>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -79,7 +79,13 @@ const Login = ({ history }: LoginProps) => {
                 {...register("password")}
               />
             </div>
-            <div>
+            <div className="mt-2">
+              <a href="/signup" className="text-blue-700 underline">
+                Signup here!
+              </a>
+            </div>
+
+            <div className="mt-5">
               <button
                 disabled={isSubmitting}
                 type="submit"

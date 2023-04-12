@@ -14,8 +14,8 @@ const userRoutes: Array<RouteProps> = [
   { path: "/projects", component: Profile },
   { path: "/profiles", component: Profile },
   { path: "/profile/add", component: Profile },
-  { path: "/profile/:id", component: Profile },
-  { path: "/profile/edit/:id", component: Profile },
+  { path: "/profile", component: Profile },
+  { path: "/profile/edit", component: Profile },
   { path: "/dashboard", component: Dashboard },
   { path: "/", exact: true, component: () => <Redirect to="/dashboard" /> },
 ];

@@ -115,6 +115,12 @@ const Signup = ({ history }: LoginProps) => {
               </span>
             </div>
 
+            <div className="mt-2">
+              <a href="/login" className="text-blue-700 underline">
+                Login
+              </a>
+            </div>
+
             <div className="mt-5">
               <button
                 disabled={isSubmitting}

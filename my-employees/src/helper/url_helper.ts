@@ -16,3 +16,7 @@ export const UPDATE_AMBASSADOR = "/ambassador/users/info";
 // UPDATE PASSWORD
 export const UPDATE_PASSWORD_ADMIN = "/admin/users/password";
 export const UPDATE_PASSWORD_AMBASSADOR = "/ambassador/users/password";
+
+// GET PROFILE INFO
+export const GET_PROFILE_INFO_ADMIN = "/admin/user";
+export const GET_PROFILE_INFO_AMBASSADOR = "/ambassador/user";

@@ -2,7 +2,9 @@ import { takeEvery, fork, put, all, call } from "redux-saga/effects";
 
 // Login Redux States
 import { ProfileTypes } from "./actionTypes";
-import { profileSuccess, profileError } from "./actions";
+import { profileSuccess, profileError, getProfileSuccess } from "./actions";
+import { getProfileAuth } from "api/api";
+import * as url from "../../../helper/url_helper";
 
 //Include Both Helper File with needed methods
 
@@ -27,7 +29,20 @@ function* editProfile({ payload: { user } }: any) {
     yield put(profileError(error));
   }
 }
+
+function* getProfile() {
+  try {
+    const response: Promise<any> = yield call(
+      getProfileAuth,
+      url.GET_PROFILE_INFO_AMBASSADOR
+    );
+    yield put(getProfileSuccess(response));
+  } catch (error) {
+    yield put(profileError(error));
+  }
+}
 export function* watchProfile() {
+  yield takeEvery(ProfileTypes.GET_PROFILE, getProfile);
   yield takeEvery(ProfileTypes.EDIT_PROFILE, editProfile);
 }
 
