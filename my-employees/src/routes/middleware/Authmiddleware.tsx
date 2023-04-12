@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 interface AuthLayoutProps {
   component: any;
   layout: any;
-  isAuthProtected: any;
+  isAuthProtected: boolean;
   path?: string;
   exact?: boolean;
   key?: number;
