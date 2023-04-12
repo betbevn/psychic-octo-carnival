@@ -7,8 +7,7 @@ interface LayoutProps {
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: false },
-  { name: "Team", href: "/profiles", current: false },
-  { name: "Projects", href: "/projects", current: false },
+  { name: "Team", href: "/team", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "/profile" },
@@ -70,7 +69,7 @@ const Layout = (props: LayoutProps) => {
                           <img
                             className="h-8 w-8 rounded-full"
                             src={
-                              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                              "https://i1.sndcdn.com/avatars-000639150405-k4t29h-t500x500.jpg"
                             }
                             alt=""
                           />
@@ -134,7 +133,7 @@ const Layout = (props: LayoutProps) => {
                     <img
                       className="h-10 w-10 rounded-full"
                       src={
-                        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        "https://i1.sndcdn.com/avatars-000639150405-k4t29h-t500x500.jpg"
                       }
                       alt=""
                     />

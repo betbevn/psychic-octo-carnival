@@ -4,5 +4,8 @@ export * from "./auth/login/actions";
 /** Register */
 export * from "./auth/register/actions";
 
-/** User Profile */
+/** Profile */
 export * from "./auth/profile/actions";
+
+/** Users */
+export * from "./user/users/actions";

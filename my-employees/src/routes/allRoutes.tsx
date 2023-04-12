@@ -1,8 +1,10 @@
-import { Redirect } from "react-router-dom";
-import Profile from "../pages/users/Profile";
-import Dashboard from "../pages/dashboard/Dashboard";
-import Signup from "../pages/auth/Signup";
 import Login from "pages/auth/Login";
+import Signup from "pages/auth/Signup";
+import Dashboard from "pages/dashboard/Dashboard";
+import Profile from "pages/users/Profile";
+import Team from "pages/users/Team";
+import UserInfo from "pages/users/UserInfo";
+import { Redirect } from "react-router-dom";
 
 interface RouteProps {
   path: string;
@@ -17,6 +19,8 @@ const userRoutes: Array<RouteProps> = [
   { path: "/profile", component: Profile },
   { path: "/profile/edit", component: Profile },
   { path: "/dashboard", component: Dashboard },
+  { path: "/team", component: Team },
+  { path: "/user/:id", component: UserInfo },
   { path: "/", exact: true, component: () => <Redirect to="/dashboard" /> },
 ];
 

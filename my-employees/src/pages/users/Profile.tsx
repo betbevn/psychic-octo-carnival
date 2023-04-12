@@ -103,7 +103,7 @@ const Profile = () => {
       <div className="px-4 py-5 sm:px-6 flex justify-between">
         <div>
           <h3 className="text-base font-semibold leading-6 text-gray-900">
-            User Information
+            Profile Information
           </h3>
           <p className="mt-1 max-w-2xl text-sm text-gray-500">
             Personal details and application.
