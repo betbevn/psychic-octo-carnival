@@ -1,6 +1,7 @@
+import { RegisterStore } from "@/types/store/register/register";
 import { RegisterTypes } from "./actionTypes";
 
-const initialState = {
+const initialState: RegisterStore = {
   registrationError: null,
   message: null,
   loading: false,

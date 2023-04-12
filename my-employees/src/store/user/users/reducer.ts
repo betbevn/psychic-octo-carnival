@@ -1,6 +1,7 @@
+import { UsersStore } from "@/types/store/users/users";
 import { ProfileTypes } from "./actionTypes";
 
-const initialState = {
+const initialState: UsersStore = {
   error: "",
   users: [],
   userInfo: null,

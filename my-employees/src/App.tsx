@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Authmiddleware from "./routes/middleware/Authmiddleware";
-import { authRoutes, userRoutes } from "./routes/allRoutes";
-import NonAuthLayout from "./components/NonAuthLayout";
 import Layout from "./components/Layout";
+import NonAuthLayout from "./components/NonAuthLayout";
+import { authRoutes, userRoutes } from "./routes/allRoutes";
+import Authmiddleware from "./routes/middleware/Authmiddleware";
 
 function App() {
   return (

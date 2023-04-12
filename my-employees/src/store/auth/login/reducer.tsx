@@ -1,6 +1,7 @@
+import { LoginStore } from "@/types/store/login/login";
 import { LoginTypes } from "./actionTypes";
 
-const initialState = {
+const initialState: LoginStore = {
   error: "",
   loading: false,
 };

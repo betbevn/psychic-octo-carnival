@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { StoreState } from "../types";
 
 //login
 import login from "./auth/login/reducer";
@@ -10,9 +11,10 @@ import register from "./auth/register/reducer";
 import profile from "./auth/profile/reducer";
 
 // Profile
+
 import users from "./user/users/reducer";
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers<StoreState>({
   login,
   register,
   profile,

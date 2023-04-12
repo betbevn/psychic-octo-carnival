@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UserForm } from "helper/interface_helper";
+import { UserForm } from "@/types/common";
 import { History } from "history";
 import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";

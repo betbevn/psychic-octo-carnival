@@ -1,6 +1,7 @@
+import { ProfileStore } from "@/types/store/profile/profile";
 import { ProfileTypes } from "./actionTypes";
 
-const initialState = {
+const initialState: ProfileStore = {
   error: "",
   success: "",
 };

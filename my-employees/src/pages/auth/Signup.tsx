@@ -1,6 +1,6 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UserForm } from "helper/interface_helper";
+import { UserForm } from "@/types/common";
 import { History } from "history";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
