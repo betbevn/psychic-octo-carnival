@@ -22,3 +22,11 @@ export interface UpdateProfilePayload {
   firstName: string;
   lastName: string;
 }
+
+export interface PaginationResult<T> {
+  data: T[];
+  count: number;
+  currentPage: number;
+  totalPage: number;
+  cursor?: string;
+}

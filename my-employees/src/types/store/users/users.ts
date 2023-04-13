@@ -1,7 +1,7 @@
-import { UserEntity } from "@/types/common";
+import { PaginationResult, UserEntity } from "@/types/common";
 
 export interface UsersStore {
   error: string;
-  users: UserEntity[];
+  users: PaginationResult<UserEntity>;
   userInfo?: UserEntity;
 }

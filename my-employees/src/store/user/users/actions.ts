@@ -1,9 +1,10 @@
 import { ProfileTypes } from "./actionTypes";
 
 // Get all users
-export const getAllUsers = () => {
+export const getAllUsers = (params: any) => {
   return {
     type: ProfileTypes.GET_ALL_USERS,
+    payload: { params },
   };
 };
 

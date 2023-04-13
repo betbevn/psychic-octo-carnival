@@ -3,7 +3,13 @@ import { ProfileTypes } from "./actionTypes";
 
 const initialState: UsersStore = {
   error: "",
-  users: [],
+  users: {
+    data: [],
+    count: 10,
+    currentPage: 1,
+    totalPage: 1,
+    cursor: "",
+  },
   userInfo: undefined,
 };
 

@@ -16,6 +16,8 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { UserService } from './user.service';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
+import { QueryPaginationDto } from 'src/common/dto/query-pagination.dto';
+import { ListUsersDto } from './dtos/listUsers.dto';
 
 @Controller()
 @UseInterceptors(ClassSerializerInterceptor)
@@ -26,10 +28,30 @@ export class UserController {
   ) {}
 
   @Get(['admin/users', 'ambassador/users'])
-  async users(@Req() request: Request) {
-    const users = await this.userService.find();
+  async users(@Req() request) {
+    const { limit, page, search } = request.query as QueryPaginationDto &
+      ListUsersDto;
+    const metadata = {
+      limit,
+      page,
+    };
 
-    const reponse = users.map((item) => {
+    const queryBuilder = this.userService
+      .repositoryAbstract()
+      .createQueryBuilder('users');
+
+    if (search) {
+      queryBuilder.andWhere(
+        'users.first_name = :search OR users.last_name = :search OR users.email = :search',
+        { search },
+      );
+    }
+
+    Object.assign(metadata, { queryBuilder });
+
+    const data = await this.userService.listPaged(metadata);
+
+    const users = data.data.map((item) => {
       return {
         email: item.email,
         firstName: item.first_name,
@@ -39,7 +61,10 @@ export class UserController {
       };
     });
 
-    return reponse;
+    return {
+      ...data,
+      data: users,
+    };
   }
 
   @UseGuards(AuthGuard)
@@ -48,6 +73,7 @@ export class UserController {
     const user = await this.userService.findOne({
       where: { id },
     });
+
     return {
       email: user.email,
       firstName: user.first_name,

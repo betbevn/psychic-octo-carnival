@@ -1,7 +1,8 @@
-import { Repository } from 'typeorm';
+import { PaginationParams } from 'src/types/pagination.interfaces';
+import { TypeORMRepository } from './typeorm.repository';
 
-export abstract class AbstractService {
-  protected constructor(protected readonly repository: Repository<any>) {}
+export class AbstractService<T> {
+  protected constructor(protected readonly repository: TypeORMRepository<T>) {}
 
   async save(options) {
     return this.repository.save(options);
@@ -21,5 +22,33 @@ export abstract class AbstractService {
 
   async delete(id: number) {
     return this.repository.delete(id);
+  }
+
+  async listPaged(query: PaginationParams<T>) {
+    const { limit = 10, page = 1 } = query;
+    let queryBuilder = query.queryBuilder;
+
+    if (!queryBuilder) {
+      queryBuilder = this.repository
+        .createQueryBuilder('document')
+        .orderBy('document.createdAt', 'ASC');
+    }
+
+    queryBuilder
+      .limit(Number(limit) || 10)
+      .offset((Number(page) - 1) * limit || 0);
+
+    const [data, count] = await queryBuilder.getManyAndCount();
+
+    return {
+      data,
+      count,
+      currentPage: Number(page),
+      totalPage: Math.ceil(count / limit),
+    };
+  }
+
+  repositoryAbstract() {
+    return this.repository;
   }
 }
