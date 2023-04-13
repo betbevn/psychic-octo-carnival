@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import * as url from "./url_helper";
 
-//apply base url for axios
 const API_URL = url.BASE_URL;
 
 const axiosApi = axios.create({
