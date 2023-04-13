@@ -8,7 +8,7 @@ import Authmiddleware from "./routes/middleware/Authmiddleware";
 function App() {
   return (
     <React.Fragment>
-      <Router forceRefresh>
+      <Router>
         <Switch>
           {authRoutes.map((route, idx) => (
             <Authmiddleware
