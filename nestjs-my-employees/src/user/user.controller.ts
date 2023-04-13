@@ -42,7 +42,7 @@ export class UserController {
 
     if (search) {
       queryBuilder.andWhere(
-        'users.first_name = :search OR users.last_name = :search OR users.email = :search',
+        'users.first_name LIKE :search OR users.last_name LIKE :search OR users.email LIKE :search',
         { search },
       );
     }

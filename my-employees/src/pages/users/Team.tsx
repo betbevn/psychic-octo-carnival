@@ -44,7 +44,7 @@ const Team = ({ history }: TeamProps) => {
 
   const handleFilter = useCallback(
     (form: { search: string }) => {
-      dispatch(getAllUsers({ limit: 10, page: 1, search: form.search }));
+      dispatch(getAllUsers({ limit: 10, page: 1, search: form.search.trim() }));
     },
     [dispatch]
   );
