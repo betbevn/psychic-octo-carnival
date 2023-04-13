@@ -30,3 +30,9 @@ export interface PaginationResult<T> {
   totalPage: number;
   cursor?: string;
 }
+
+export interface ParamsGetListUsers {
+  limit: number;
+  page: number;
+  search: string;
+}

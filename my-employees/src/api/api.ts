@@ -4,8 +4,7 @@ import { get, getAuth, post, putAuth } from "helper/api_helper";
 
 const postRegister = (url: string, data: any) => post(url, data);
 const postLogin = (url: string, data: any) => post(url, data);
-const getAllUsers = (url: string, params: { id: string }) =>
-  get(url, { params });
+const getAllUsers = (url: string, params: any) => get(url, { params });
 
 // With Auth
 

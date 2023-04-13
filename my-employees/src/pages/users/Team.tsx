@@ -1,11 +1,9 @@
 import { UserEntity } from "@/types/common";
-import { StoreState } from "@/types/index";
 import { History } from "history";
-import { useCallback, useEffect } from "react";
+import { useGetListUsers } from "hooks/useGetListUser";
+import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getAllUsers } from "store/user/users/actions";
 import Pagination from "../../components/Pagination";
 
 interface TeamProps {
@@ -13,7 +11,15 @@ interface TeamProps {
 }
 
 const Team = ({ history }: TeamProps) => {
-  const dispatch = useDispatch();
+  const [filter, setFilter] = useState<{
+    limit: number;
+    page: number;
+    search: string;
+  }>({
+    limit: 10,
+    page: 1,
+    search: "",
+  });
 
   const {
     register,
@@ -27,27 +33,15 @@ const Team = ({ history }: TeamProps) => {
     },
   });
 
-  const { users } = useSelector((state: StoreState) => ({
-    users: state.users.users,
-  }));
+  const { users } = useGetListUsers(filter);
 
-  useEffect(() => {
-    dispatch(getAllUsers({ limit: 10, page: 1 }));
-  }, [dispatch]);
+  const onChangePage = useCallback((page: number) => {
+    setFilter((pre) => ({ ...pre, page }));
+  }, []);
 
-  const onChangePage = useCallback(
-    (page: number) => {
-      dispatch(getAllUsers({ limit: 10, page }));
-    },
-    [dispatch]
-  );
-
-  const handleFilter = useCallback(
-    (form: { search: string }) => {
-      dispatch(getAllUsers({ limit: 10, page: 1, search: form.search.trim() }));
-    },
-    [dispatch]
-  );
+  const handleFilter = useCallback((form: { search: string }) => {
+    setFilter((pre) => ({ ...pre, search: form.search.trim() }));
+  }, []);
 
   return (
     <div className="overflow-x-auto">
@@ -105,10 +99,10 @@ const Team = ({ history }: TeamProps) => {
         </tbody>
       </table>
       <Pagination
-        currentPage={users.currentPage}
+        currentPage={filter.page}
         onPageSelect={onChangePage}
-        total={users.count}
-        itemsPerPage={10}
+        total={users?.count}
+        itemsPerPage={filter.limit}
       />
     </div>
   );

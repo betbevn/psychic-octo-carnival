@@ -40,8 +40,9 @@ const Pagination: FC<PaginationProps> = ({
           1
         </button>
 
-        {middleButtonPages.map((i) => (
+        {middleButtonPages.map((i, index) => (
           <button
+            key={index}
             className={`btn ${i === currentPage && "btn-active"}`}
             onClick={() => onPageSelect(i)}
           >
