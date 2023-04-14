@@ -20,8 +20,6 @@ const connectionOptions = {
   cli: {
     migrationsDir: 'src/database/migrations',
   },
-  seeds: ['src/database/seeds/**/*{.ts,.js}'],
-  factories: ['src/database/factories/**/*{.ts,.js}'],
 } as TypeOrmModuleOptions;
 
 export = connectionOptions;
