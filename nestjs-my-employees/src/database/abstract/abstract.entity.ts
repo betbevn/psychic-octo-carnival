@@ -1,5 +1,5 @@
 import { PaginationParams } from 'src/types/pagination.interfaces';
-import { TypeORMRepository } from '../../shared/typeorm.repository';
+import { TypeORMRepository } from '../typeorm.repository';
 
 export class AbstractService<T> {
   protected constructor(protected readonly repository: TypeORMRepository<T>) {}
