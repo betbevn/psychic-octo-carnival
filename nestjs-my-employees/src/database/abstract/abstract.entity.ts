@@ -1,4 +1,4 @@
-import { PaginationParams } from 'src/types/pagination.interfaces';
+import { PaginationParams } from 'src/interfaces/pagination.interface';
 import { TypeORMRepository } from '../typeorm.repository';
 
 export class AbstractService<T> {
