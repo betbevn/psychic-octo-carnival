@@ -72,7 +72,7 @@
            Front-End:
              - cd my-employeees
              - yarn start
-             - Go to http://localhost:3000
+             - go to http://localhost:3000
            Back-End:
              - end point http://localhost:8080/api/v1
            MariaDB:
