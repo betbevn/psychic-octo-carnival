@@ -12,7 +12,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from 'src/modules/auth/auth.guard';
 import { UserService } from './user.service';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
