@@ -11,6 +11,7 @@ interface TeamProps {
 }
 
 const Team = ({ history }: TeamProps) => {
+  const [teams, setTeams] = useState([]);
   const [filter, setFilter] = useState<{
     limit: number;
     page: number;

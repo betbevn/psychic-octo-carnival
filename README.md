@@ -81,7 +81,22 @@
              - database: ambassador
         ```
 
-3.  Folder Structure
+3.  Migrate data
+
+- Change information in TypeOrmModule to
+
+  ```javascript
+  host: 'localhost',
+  port: 33066,
+  ```
+
+- Run this commands to run migration data and data structure
+  ```bash
+  yarn typeorm:local:migration:generate init
+  yarn typeorm:local:migration:run
+  ```
+
+4.  Folder Structure
 
 - Back-End structure
 
