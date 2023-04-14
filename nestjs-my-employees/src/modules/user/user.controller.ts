@@ -31,25 +31,14 @@ export class UserController {
   async users(@Req() request) {
     const { limit, page, search } = request.query as QueryPaginationDto &
       ListUsersDto;
+
     const metadata = {
       limit,
       page,
+      search,
     };
 
-    const queryBuilder = this.userService
-      .repositoryAbstract()
-      .createQueryBuilder('users');
-
-    if (search) {
-      queryBuilder.andWhere(
-        'users.first_name LIKE :search OR users.last_name LIKE :search OR users.email LIKE :search',
-        { search },
-      );
-    }
-
-    Object.assign(metadata, { queryBuilder });
-
-    const data = await this.userService.listPaged(metadata);
+    const data = await this.userService.getListUsersPaged(metadata);
 
     const users = data.data.map((item) => {
       return {
