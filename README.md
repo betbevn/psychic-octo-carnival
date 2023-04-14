@@ -87,59 +87,57 @@
 
 - Back-End structure
 
-```
-├── src
-│ ├── common
-│ ├── database
-│ ├── interfaces
-│ ├── modules
-│ │ ├── auth
-│ │ ├── user
-│ ├── shared
-│ ├── app.controller.ts
-│ ├── app.module.ts
-│ ├── app.service.ts
-│ ├── main.ts
-├── dist
-├── node_modules
-├── package.json
-├── package-lock.json
-└── .gitignore
-```
+  ```
+  ├── src
+  │ ├── common
+  │ ├── database
+  │ ├── interfaces
+  │ ├── modules
+  │ │ ├── auth
+  │ │ ├── user
+  │ ├── shared
+  │ ├── app.controller.ts
+  │ ├── app.module.ts
+  │ ├── app.service.ts
+  │ ├── main.ts
+  ├── dist
+  ├── node_modules
+  ├── package.json
+  ├── package-lock.json
+  └── .gitignore
+  ```
 
 - Front End structure
 
-- Back-End structure
-
-```
-├── src
-│ ├── api
-│ ├── components
-│ ├── helper
-│ ├── hooks
-│ │ ├── useGetListUser.ts
-│ ├── pages
-│ │ ├── auth
-│ │ ├── dashboard
-│ │ ├── users
-│ ├── routes
-│ │ ├── middleware
-│ │ ├── allRoutes.tsx
-│ ├── store
-│ │ ├── auth
-│ │ ├── user
-│ │ ├── actions.ts
-│ │ ├── index.ts
-│ │ ├── reducers.ts
-│ │ ├── sagas.ts
-│ ├── styles
-│ ├── types
-│ ├── App.tsx
-│ ├── index.css
-│ ├── index.tsx
-├── dist
-├── node_modules
-├── package.json
-├── package-lock.json
-└── .gitignore
-```
+  ```
+  ├── src
+  │ ├── api
+  │ ├── components
+  │ ├── helper
+  │ ├── hooks
+  │ │ ├── useGetListUser.ts
+  │ ├── pages
+  │ │ ├── auth
+  │ │ ├── dashboard
+  │ │ ├── users
+  │ ├── routes
+  │ │ ├── middleware
+  │ │ ├── allRoutes.tsx
+  │ ├── store
+  │ │ ├── auth
+  │ │ ├── user
+  │ │ ├── actions.ts
+  │ │ ├── index.ts
+  │ │ ├── reducers.ts
+  │ │ ├── sagas.ts
+  │ ├── styles
+  │ ├── types
+  │ ├── App.tsx
+  │ ├── index.css
+  │ ├── index.tsx
+  ├── dist
+  ├── node_modules
+  ├── package.json
+  ├── package-lock.json
+  └── .gitignore
+  ```
